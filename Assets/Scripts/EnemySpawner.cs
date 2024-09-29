@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private bool canSpawn = true;
 
+    [SerializeField]
+    private int spawnNum = 0;
+
     private void Start()
     {
         StartCoroutine(Spawner());
@@ -31,13 +34,18 @@ public class EnemySpawner : MonoBehaviour
 
             Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
 
+            spawnNum++;
+
+            if (spawnNum >= 2)
+            {
+                canSpawn = false;
+            }
+
         }
 
+
     }
 
-    public void OnPlayerDeath()
-    {
-        canSpawn = false;
-    }
+    
 
 }
