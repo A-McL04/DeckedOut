@@ -7,6 +7,7 @@ public class UI_Shop : MonoBehaviour
 {
     public Player _player;
     public GameObject activeGameObject;
+    public Dealer _dealer;
     
     
     
@@ -36,6 +37,7 @@ public class UI_Shop : MonoBehaviour
         }
 
         activeGameObject.SetActive(false);
+        _dealer.Despawn();
 
     }
 
@@ -43,5 +45,6 @@ public class UI_Shop : MonoBehaviour
     {
         activeGameObject.SetActive(true);
     }
+    
 
 }

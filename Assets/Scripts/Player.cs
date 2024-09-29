@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rb2d;
     public TrailRenderer tr;
+    public Dealer _dealer;
+    public GameObject activeGameObject;
+
+
 
     private float _activeMoveSpeed;
     [SerializeField]
@@ -39,6 +43,11 @@ public class Player : MonoBehaviour
     private float attackRange;
     [SerializeField]
     private int damage;
+    [SerializeField]
+    private int kills = 0;
+    private int killsNeeded;
+
+    
 
 
     void Start()
@@ -46,6 +55,8 @@ public class Player : MonoBehaviour
         _activeMoveSpeed = _speed;
 
         m_transform = this.transform;
+
+        killsNeeded = 8;
     }
 
     
@@ -114,7 +125,7 @@ public class Player : MonoBehaviour
 
         if (_lives < 1)
         {
-            Destroy(this.gameObject);
+            activeGameObject.SetActive(false);
         }
 
     }
@@ -156,7 +167,17 @@ public class Player : MonoBehaviour
 
     }
 
-
+    public void Kills(int points)
+    {
+        kills += points;
+        if(kills == killsNeeded)
+        {
+            Debug.Log("Kills have been met");
+            _dealer.Spawn();
+            kills = 0;
+        }
+    }
+    
     public void DashSlowDebuff()
     {
         _speed--;

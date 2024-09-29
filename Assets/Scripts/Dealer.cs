@@ -9,6 +9,12 @@ public class Dealer : MonoBehaviour
 
     public Player _player;
     public UI_Shop _uiShop;
+    public GameObject activeGameObject;
+    public EnemySpawner _enemySpawnerUp;
+    public EnemySpawner _enemySpawnerDown;
+    public EnemySpawner _enemySpawnerLeft;
+    public EnemySpawner _enemySpawnerRight;
+    
     
 
     void Start()
@@ -35,6 +41,23 @@ public class Dealer : MonoBehaviour
         {
             _uiShop.Display();
         }
+    }
+
+    public void Spawn()
+    {
+        activeGameObject.SetActive(true);
+        Debug.Log("Dealer Spawns");
+    }
+
+    public void Despawn()
+    {
+        Debug.Log("Dealer Despawned");
+        _enemySpawnerUp.NewWave();
+        _enemySpawnerDown.NewWave();
+        _enemySpawnerLeft.NewWave();
+        _enemySpawnerRight.NewWave();
+        activeGameObject.SetActive(false);
+        
     }
 
 }

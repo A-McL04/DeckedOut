@@ -20,11 +20,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private int spawnNum = 0;
 
-    private void Start()
+    public void Start()
     {
+        if (canSpawnEnemy == true)
+        {
+            StartCoroutine(Spawner());
+        }
+
+    }    
         
-        StartCoroutine(Spawner());
-    }
+    
 
     private IEnumerator Spawner()
     {
@@ -52,6 +57,12 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    
+    public void NewWave()
+    {
+        Debug.Log("NewWave");
+        spawnNum = 0;
+        canSpawnEnemy = true;
+        Start();
+    }
 
 }

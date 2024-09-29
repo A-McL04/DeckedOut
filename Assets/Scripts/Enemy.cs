@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
-    private Player _player;
-    
+
+
+    public Player _player;
 
     public float _speed;
 
@@ -18,14 +18,18 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+
         _player = GameObject.Find("Player").GetComponent<Player>();
-        
     }
 
     
     void Update()
     {
-        Chase();
+        if (_player != null)
+        {
+            Chase();
+        }
+        
     }
 
     void Chase()
@@ -36,8 +40,12 @@ public class Enemy : MonoBehaviour
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+        
+        
         transform.position = Vector2.MoveTowards(this.transform.position, _player.transform.position, _speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -49,6 +57,7 @@ public class Enemy : MonoBehaviour
             if (player != null)
             {
                 player.Damage();
+                _player.Kills(1);
             }
 
             Destroy(this.gameObject);
@@ -62,11 +71,18 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
-         
+            _player = GameObject.Find("Player").GetComponent<Player>();
+            _player.Kills(1);
             Destroy(gameObject);
             
         }
 
+    }
+
+    public void Waves()
+    {
+        health++;
+        _speed = _speed + 0.1f;
     }
 
 }
