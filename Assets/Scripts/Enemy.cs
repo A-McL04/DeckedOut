@@ -6,8 +6,11 @@ public class Enemy : MonoBehaviour
 {
     
     private Player _player;
+    
 
     public float _speed;
+
+    
 
     private float distance;
     [SerializeField]
@@ -16,6 +19,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
+        
     }
 
     
@@ -58,8 +62,11 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
+         
             Destroy(gameObject);
+            
         }
+
     }
 
 }

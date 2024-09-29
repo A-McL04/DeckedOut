@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    
+    
     [SerializeField]
     private float spawnRate = 1f;
 
     [SerializeField]
     private GameObject[] enemyPrefab;
+    
 
     [SerializeField]
-    private bool canSpawn = true;
+    private bool canSpawnEnemy = true;
+   
 
     [SerializeField]
     private int spawnNum = 0;
 
     private void Start()
     {
+        
         StartCoroutine(Spawner());
     }
 
@@ -25,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     {
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
 
-        while(canSpawn == true)
+        while(canSpawnEnemy == true)
         {
             yield return wait;
 
@@ -38,8 +43,9 @@ public class EnemySpawner : MonoBehaviour
 
             if (spawnNum >= 2)
             {
-                canSpawn = false;
+                canSpawnEnemy = false;
             }
+
 
         }
 

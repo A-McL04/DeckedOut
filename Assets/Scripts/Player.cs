@@ -156,4 +156,15 @@ public class Player : MonoBehaviour
 
     }
 
+
+    public void DashSlowDebuff()
+    {
+        _speed--;
+    }
+
+    public void DashSpeedBuff()
+    {
+        _speed++;
+    }
+
 }

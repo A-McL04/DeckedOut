@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5376312071767449278}
   - component: {fileID: 7324391825969902553}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: FastEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.24056602, b: 0.6066138, a: 1}
+  m_Color: {r: 0.8867924, g: 0.3293102, b: 0.06274474, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -143,5 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c80b142b633d4e428f67b8aa7a42353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.5
-  health: 2
+  _speed: 2.5
+  _deathLimit: 1
+  health: 1
